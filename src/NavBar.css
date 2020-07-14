@@ -1,0 +1,58 @@
+.bar-container {
+  position: absolute;
+}
+.bar {
+  display: inline-block;
+  margin: 0 1px;
+}
+.NavBar {
+  display: center;
+  margin-bottom: 50px;
+}
+.container {
+    display:inline-block;
+    margin-right:auto;
+    margin-left:auto;
+}
+.form-1 {
+  display:inline-block;
+  margin-right:auto;
+  margin-left:auto;
+  width: 70%
+}
+form {
+    align-self:center;
+    text-align: left;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li button {
+  display: block;
+  color: white;
+  background-color: #333;
+  text-align: center;
+  padding: 25px 50px;
+  text-decoration: none;
+  margin: 0;
+  border: none;
+  outline: #333;
+}
+
+li button:hover {
+  background-color: #111;
+  outline: #111;
+}
+li button:focus {
+  outline: #333;
+  outline: #111;
+}
