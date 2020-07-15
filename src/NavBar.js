@@ -11,9 +11,7 @@ export default class List extends React.Component {
     this.callApi = this.callApi.bind(this);
     this.call = this.call.bind(this);
   }
-  componentDidMount() {
-    //add some random
-  }
+
   handleInputChange(event) {
     const target = event.target;
     console.log(target.name);
@@ -59,16 +57,10 @@ export default class List extends React.Component {
         console.log(req);
         this.setState({ question: req });
       })
-      // .catch(function (error) {
-      //   console.log(error);
-      //   console.log("Error " + error.status + " " + error.responseText);
-      // });
-  }
-  checkAnswers(event) {
-    event.preventDefault();
-    console.log(event);
-    //this.call(,"/verify")
-    console.log("df");
+      .catch(function (error) {
+        console.log(error);
+        console.log("Error " + error.status + " " + error.responseText);
+      });
   }
  
   render() {
@@ -78,45 +70,8 @@ export default class List extends React.Component {
     }
     return (
       <div>
-        <div className="NavBar">
-          <ul>
-            <li>
-              <button onClick={() => console.log("D")}> Merge Sort </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Insertion Sort </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Bubble Sort </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Quick Sort </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Selection Sort </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Heap Sort </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Counting Sort </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Radix Sort </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Random Swaps </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Swap Random </button>
-            </li>
-            <li>
-              <button onClick={() => console.log("D")}> Reset </button>
-            </li>
-          </ul>
-        </div>
         <div className="container">
-          <h1>Pick the difficulty</h1>
+          <h1>Pick The Difficulty</h1>
           <form action="" name="formInfo" onSubmit={this.callApi}>
             <label htmlFor="trivia_amount"> Number of Questions: </label>
             <input
@@ -249,6 +204,7 @@ class Questions extends React.Component {
   }
   reset(event) {
     event.preventDefault();
+    window.location.reload();
     this.setState({ grade: undefined });
   }
   render() {
@@ -257,8 +213,8 @@ class Questions extends React.Component {
       return <div></div>;
     } else if (this.state.grade !== undefined) {
       return (
-        <div>
-          <h1 className="grade">Your Grade is {this.state.grade * 100}%</h1>
+        <div className="grade"  >
+          <h1 >Your Grade is {this.state.grade * 100}%</h1>
           <button className="Reset" onClick={this.reset}>
             New Quiz
           </button>

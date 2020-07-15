@@ -1,13 +1,8 @@
-.bar-container {
-  position: absolute;
-}
-.bar {
-  display: inline-block;
-  margin: 0 1px;
-}
 .NavBar {
+  float:center;
   display: center;
   margin-bottom: 50px;
+  text-align: center;
 }
 .container {
     display:inline-block;
@@ -20,39 +15,81 @@
   margin-left:auto;
   width: 70%
 }
+body{
+  background-color: turquoise;
+}
 form {
     align-self:center;
     text-align: left;
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+label{
+  display: block;
+  color: white;
   background-color: #333;
+  padding: 15px 30px; 
+ 
+  float:center;
+  outline: #333;
 }
-
-li {
-  float: left;
-}
-
-li button {
+select{
   display: block;
   color: white;
   background-color: #333;
   text-align: center;
-  padding: 25px 50px;
+  padding: 15px 30px; 
+  width:365px;
+  float:center;
+  outline: #333;
+}
+input{
+  display: block;
+  color: black;
+  background-color:lightgrey;
+  text-align: center;
+  padding: 15px 30px; 
+  width:300px;
+  float:center;
+  outline: #333;
+}
+.grade{
+  display:inline-block;
+}
+.Reset{
+  display:inline-block;
+}
+button {
+  display: block;
+  color: white;
+  background-color: #333;
+  text-align: center;
+  padding: 15px 30px; 
+  float:center;
   text-decoration: none;
   margin: 0;
   border: none;
   outline: #333;
 }
 
-li button:hover {
+button:hover {
   background-color: #111;
   outline: #111;
 }
-li button:focus {
+button:focus {
   outline: #333;
   outline: #111;
+}
+input:hover{
+  background-color:grey;
+}
+button:focus {
+  outline: black;
+  outline:grey;
+}
+label:hover {
+  outline: black;
+  outline:grey;
+}
+label:focus{
+  background-color: #111;
+  outline: grey;
 }
