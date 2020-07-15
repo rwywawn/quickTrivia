@@ -59,10 +59,10 @@ export default class List extends React.Component {
         console.log(req);
         this.setState({ question: req });
       })
-      .catch(function (error) {
-        console.log(error);
-        console.log("Error " + error.status + " " + error.responseText);
-      });
+      // .catch(function (error) {
+      //   console.log(error);
+      //   console.log("Error " + error.status + " " + error.responseText);
+      // });
   }
   checkAnswers(event) {
     event.preventDefault();
@@ -70,6 +70,7 @@ export default class List extends React.Component {
     //this.call(,"/verify")
     console.log("df");
   }
+ 
   render() {
     console.log(document.getElementsByClassName("grades").length===0);
     if (document.getElementsByClassName("grades").length !== 0) {
@@ -179,7 +180,7 @@ export default class List extends React.Component {
           </form>
         </div>
         <br></br>
-        <Questions questions={this.state.question} that={this} />
+        <Questions questions={this.state.question} />
       </div>
     );
   }
@@ -212,11 +213,12 @@ class Questions extends React.Component {
   }
   callApi() {
     const answers = Object.values(this.state);
-    console.log(answers);
+    answers.shift()
+    console.log(answers,"dsfsa");
 
     this.call(answers, "verify")
       .then((req) => {
-        console.log(req);
+        console.log(req,"df");
         this.setState({ grade: req });
       })
       .catch(function (error) {
@@ -266,6 +268,7 @@ class Questions extends React.Component {
       const defaultVal = {};
       if (Object.keys(this.state).length === 0) {
         console.log("sdf");
+        defaultVal.ques=true;
         this.props.questions.map((item, ind) => (defaultVal[`question${ind}`] = decodeHTMLEntities(item.incorrect_answers[0])));
         this.setState(defaultVal);
       }
@@ -279,7 +282,6 @@ class Questions extends React.Component {
                   {ind + 1}. {decodeHTMLEntities(item.question)}
                 </label>
                 <br></br>
-
                 <select key={`${ind}s`} name={`question${ind}`} onChange={this.handleChange}>
                   {item.incorrect_answers.map((ans, index) => (
                     <option key={`${index}o`} defaultValue={decodeHTMLEntities(ans)}>

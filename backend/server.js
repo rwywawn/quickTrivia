@@ -25,6 +25,7 @@ let token1 = startUp(tokenUrl)
 
 app.post("", async (req, res) => {
   console.log(`Connected`);
+  answers=[]
   const body = req.body;
   console.log(req);
   let { amount, category, difficulty, type } = body;
@@ -38,6 +39,10 @@ app.post("", async (req, res) => {
     await callApi(url)
       .then(function (data) {
         const questions = JSON.parse(data.responseText).results;
+        if (questions.length===0){
+          startUp(`https://opentdb.com/api_token.php?command=reset&token=${token}`)
+          return JSON.stringify({status:200, responseText:"Try Again"})
+        }
         console.log(questions);
 
         for (let i = 0; i < questions.length; i++) {
@@ -45,7 +50,8 @@ app.post("", async (req, res) => {
           questions[i].incorrect_answers.splice(random(0, questions[i].incorrect_answers.length), 0, questions[i].correct_answer);
           delete questions[i].correct_answer;
         }
-        console.log(data.status);
+        console.log(data.responseText);
+
         return JSON.stringify({ status: data.status, responseText: questions });
       })
       .catch(function (error) {
@@ -61,16 +67,18 @@ app.post("/verify", async (req, res) => {
     return
   }
   const response = req.body;
+  console.log(response,"sdfsd")
+
   let correct = 0;
   for (let i = 0; i < response.length; i++) {
     if (response[i] === answers[i]) {
       correct++;
+      console.log(correct)
     }
   }
   let mark = correct / answers.length;
-
+  console.log(mark)
   res.send(JSON.stringify({ status: 200, responseText: mark }));
-  answers=[];
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
